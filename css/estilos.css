@@ -1,29 +1,22 @@
-/* Establece la altura y el ancho del cuerpo y el html al 100% */
-body, html {
-    height: 100%;
-    width: 100%;
+body,html{
+	height: 100%;
+	width: 100%;
 }
-
-/* Estilos para el contenedor principal */
-.main-container {
-    background-color: rgb(222, 222, 222);
-    height: 100%; /* Establece la altura del contenedor principal al 100% */
-    width: 100%; /* Establece el ancho del contenedor principal al 100% */
-    display: flex; /* Usa el modelo de caja flexible para alinear elementos internos */
-    justify-content: center; /* Centra horizontalmente los elementos internos */
-    align-items: center; /* Centra verticalmente los elementos internos */
+.main-container{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-
-/* Estilos específicos para el elemento .login dentro de .main-container */
 .main-container > .login,
-.main-container > .hero-body {
-    height: auto; /* La altura del elemento se ajusta automáticamente según su contenido */
-    width: 100%; /* El ancho del elemento se establece al 100% */
-    max-width: 400px; /* Ancho máximo del elemento de 400px */
-    min-width: 200px; /* Ancho mínimo del elemento de 300px */
+.main-container > .hero-body{
+	height: auto;
+	width: 100%;
+	max-width: 400px;
+	min-width: 300px;
 }
 
-/* Estilos para crear un formulario en línea */
-.form-inline {
-    display: inline-flex; /* Establece el diseño en línea flexible para el formulario */
+.form-inline{
+	display: inline-flex;
 }

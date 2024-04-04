@@ -1,51 +1,47 @@
-<?php
-// Inicia la sesión (session_start.php es responsable de iniciar la sesión)
-require "./inc/session_start.php";
-?>
+<?php require "./inc/session_start.php"; ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head>
+        <?php include "./inc/head.php"; ?>
+    </head>
+    <body>
+        <?php
 
-<head>
-    <?php
-    // Incluye el archivo de encabezado (head.php) que probablemente contenga metadatos, enlaces a estilos CSS, etc.
-    include './inc/head.php';
-    ?>
-</head>
+            // Establecer la vista por defecto si no se proporciona ninguna o está vacía
+            if (!isset($_GET['vista']) || $_GET['vista'] == "") {
+                $_GET['vista'] = "login";
+            }
 
-<body>
+            // Verificar si la vista solicitada es un archivo existente y no es "login" ni "404"
+            if (is_file("./vistas/" . $_GET['vista'] . ".php") && $_GET['vista'] != "login" && $_GET['vista'] != "404") {
 
-    <?php
-    // Verifica si la variable GET 'vista' no está establecida o está vacía
-    if (!isset($_GET['vista']) || $_GET['vista'] == '') {
-        // Si no está establecida o está vacía, se establece la vista predeterminada como 'login'
-        $_GET['vista'] = 'login';
-    }
+                // Verificar si la sesión está iniciada correctamente
+                if ((!isset($_SESSION['id']) || $_SESSION['id'] == "") || (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == "")) {
+                    // Si la sesión no está iniciada correctamente, incluir el archivo de cierre de sesión y salir del script
+                    include "./vistas/logout.php";
+                    exit();
+                }
 
-    // Verifica si el archivo correspondiente a la vista especificada existe y si la vista no es 'login' ni '404'
-    if (is_file('./vistas/' . $_GET['vista'] . '.php') && $_GET['vista'] != 'login' && $_GET['vista'] != '404') {
-        // Si la vista existe y no es 'login' ni '404', se incluyen el archivo de la barra de navegación (navbar.php),
-        // el archivo de la vista específica y el archivo de scripts (script.php)
-        // Verifica si las variables de sesión 'id' y 'usuario' no están establecidas o están vacías
-        if ((!isset($_SESSION['id']) || $_SESSION['id']=='') || (!isset($_SESSION['usuario']) || $_SESSION['usuario']=='')) {
-          include "./vistas/logout.php";
-          exit();  
-        };
+                // Incluir la barra de navegación
+                include "./inc/navbar.php";
 
-        include "./inc/navbar.php";
-        include "./vistas/".$_GET['vista'].".php"; // Aquí había un error, faltaba un punto (.) para concatenar y un .php al final
-        include "./inc/script.php";
-    } else {
-        // Si la vista no existe o es 'login' o '404', se maneja de acuerdo a su valor
-        if ($_GET['vista'] == 'login') {
-            // Si la vista es 'login', se incluye el archivo de la vista de inicio de sesión (login.php)
-            include "./vistas/login.php";
-        } else {
-            // Si la vista no es 'login', se incluye el archivo de la vista de error 404 (404.php)
-            include "./vistas/404.php";
-        }
-    }
-    ?>
+                // Incluir la vista solicitada
+                include "./vistas/" . $_GET['vista'] . ".php";
 
-</body>
+                // Incluir los scripts necesarios
+                include "./inc/script.php";
 
+            } else {
+                // Si la vista solicitada es "login", incluir el archivo de inicio de sesión
+                // Si no, incluir la página de error 404
+                if ($_GET['vista'] == "login") {
+                    //Este código PHP gestiona la inclusión dinámica de diferentes vistas en función del parámetro vista proporcionado en la URL.
+                    include "./vistas/login.php";
+                } else {
+                    //También verifica si la sesión está iniciada correctamente antes de cargar cualquier vista que no sea la de inicio de sesión (login) o la de error (404).
+                    include "./vistas/404.php";
+                }
+            }
+        ?>
+    </body>
 </html>
