@@ -13,7 +13,10 @@ $id=limpiar_cadena($id);
     ?>
     <h1 class="title">La cuenta de
         <?php
+
+        // Capitalize the first letter and print
         print ucfirst($_SESSION['usuario']);
+
         ?>
     </h1>
     <h2 class="subtitle">Actualizar datos de cuenta</h2>
@@ -28,9 +31,11 @@ $id=limpiar_cadena($id);
 </div>
 <div class="container pb-6 pt-6">
     <?php
+
         include_once "./inc/btn_back.php";
 
         $check_usuario=conexion();
+        
         $check_usuario=$check_usuario->query("SELECT * FROM USUARIO WHERE usuario_id='$id'");
 
         if ($check_usuario->rowCount()>0) {
