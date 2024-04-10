@@ -28,7 +28,7 @@
     $registros = 15;
     $busqueda = "";
 
-    # Paginador usuario #
+    # Paginador categoria #
     require_once "./php/categoria_lista.php";
 
     ?>
