@@ -107,7 +107,7 @@
     }
 
 
-    /*== Verificando integridad de los datos (usuario) ==*/
+    /*== Verificando integridad de los datos (categoría) ==*/
     if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}",$categoria)){
         echo '
             <div class="notification is-danger is-light">
@@ -146,7 +146,7 @@
 	    $check_categoria=null;
     }
 
-    /*== Actualizar datos ==*/
+    /*== Actualizar datos de la categoría ==*/
     $actualizar_categoria=conexion();
     $actualizar_categoria=$actualizar_categoria->prepare("UPDATE categoria SET categoria_nombre=:categoria,categoria_ubicacion=:ubicacion WHERE categoria_id=:id");
 
