@@ -9,7 +9,7 @@
 
     require_once "./php/main.php";
 
-    # Eliminar usuario #
+    # Eliminar categoria #
     if (isset($_GET['category_id_del'])) {
         require_once "./php/categoria_eliminar.php";
     }
@@ -28,7 +28,7 @@
     $registros = 15;
     $busqueda = "";
 
-    # Paginador usuario #
+    # Paginador categoria #
     require_once "./php/categoria_lista.php";
 
     ?>
