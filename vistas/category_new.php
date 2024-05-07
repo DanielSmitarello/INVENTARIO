@@ -4,7 +4,7 @@
 </div>
 
 <div class="container is-fluid pb-6 pt-6">
-
+    <!-- En el archivo ajax.js (linea 73 a 82) se crea el mensaje para que se publique acá-->
     <div class="form-rest mb-6 mt-6"></div>
     
     <form action="./php/categoria_guardar.php" method="POST" class="FormularioAjax" autocomplete="off">
