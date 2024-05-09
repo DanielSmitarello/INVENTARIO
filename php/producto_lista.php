@@ -53,10 +53,10 @@ if($total>=1 && $pagina<=$Npaginas){
                     <div class="content">
                       <p>
                         <strong>'.$contador.' - '.$rows['producto_nombre'].'</strong><br>
-                        <strong>CODIGO:</strong> '.$rows['producto_codigo'].', 
-                        <strong>PRECIO:</strong> $'.$rows['producto_precio'].', 
-                        <strong>STOCK:</strong> '.$rows['producto_stock'].',
-                        <strong>CATEGORIA:</strong> '.$rows['categoria_nombre'].', 
+                        <strong>CODIGO:</strong> '.$rows['producto_codigo'].'<br>
+                        <strong>PRECIO:</strong> $'.$rows['producto_precio'].'<br>
+                        <strong>STOCK:</strong> '.$rows['producto_stock'].'<br>
+                        <strong>CATEGORIA:</strong> '.$rows['categoria_nombre'].'<br> 
                         <strong>REGISTRADO POR:</strong> '.$rows['usuario_nombre'].' '.$rows['usuario_apellido'].'
                       </p>
                     </div>

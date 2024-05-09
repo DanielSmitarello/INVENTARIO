@@ -8,11 +8,15 @@
     <?php
         require_once "./php/main.php";
 
+        // Verifica si se ha enviado un formulario con el nombre de módulo 'modulo_buscador' mediante el método POST
         if (isset($_POST['modulo_buscador'])) {
+            // Si se ha enviado el formulario, incluye y ejecuta el archivo "buscador.php"
             require_once "./php/buscador.php";
         }
-
+        
+        // Verifica si la variable de sesión 'busqueda_producto' no está definida o está vacía
         if (!isset($_SESSION['busqueda_producto']) && empty($_SESSION['busqueda_producto'])) {
+            // Si la variable de sesión no está definida o está vacía, ejecuta el siguiente bloque de código
     ?>
 
     <div class="columns">
@@ -36,7 +40,8 @@
             <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="off">
                 <input type="hidden" name="modulo_buscador" value="producto">
                 <input type="hidden" name="eliminar_buscador" value="producto">
-                <p>Estas buscando <strong>"<?php print $_SESSION['busqueda_producto']; ?>"</strong></p>
+                <!-- Por medio de ´sta linea se imprime por pantalla lo que se esta buscando -->
+                <p>Estas buscando <strong>"<?php echo $_SESSION['busqueda_producto']; ?>"</strong></p>
                 <br>
                 <button type="submit" class="button is-danger is-rounded">Eliminar</button>
             </form>
