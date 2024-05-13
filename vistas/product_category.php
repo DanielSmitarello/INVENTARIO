@@ -15,14 +15,24 @@
         <div class="column is-one-third">
             <h2 class="title has-text-centered">Categorias</h2>
             <?php
+
+            // Establish a database connection
             $categorias = conexion();
+
+            // Execute a query to SELECT all categories from categories
             $categorias = $categorias->query("SELECT * FROM categoria");
+
+            // If there's a product or plus of one product...
             if ($categorias->rowCount() > 0) {
+                // Obtiene todas las categorías por medio de fetchAll.  En este caso pueden ser varios.. sino fetch
                 $categorias = $categorias->fetchAll();
+                //Usamos un loop para recorrer cada una de las categorias para cada producto...
                 foreach ($categorias as $row) {
+                    // Muestra la categoría como un enlace con el ID de categoría como parámetro
                     echo '<a href="index.php?vista=product_category&category_id=' . $row['categoria_id'] . '" class="button is-link is-inverted is-fullwidth">' . $row['categoria_nombre'] . '</a>';
                 }
             } else {
+                //Sino se devuelven categorias muestra el mensaje...
                 echo '<p class="has-text-centered">No hay categorias registradas</p>';
             }
             $categoria = null;
@@ -53,6 +63,7 @@
                     require_once "./php/producto_eliminar.php";
                 }
 
+                // Paginador.
                 // Verifica si no se ha recibido un valor para 'page' en la solicitud GET
                 if (!isset($_GET['page'])) {
                     // Si no se ha recibido ningún valor, establece la página actual como 1
