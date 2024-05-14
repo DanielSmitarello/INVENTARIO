@@ -15,7 +15,7 @@ $id=limpiar_cadena($id);
         <?php
 
         // Capitalize the first letter and print
-        print ucfirst($_SESSION['usuario']);
+        echo ucfirst($_SESSION['usuario']);
 
         ?>
     </h1>
@@ -49,19 +49,19 @@ $id=limpiar_cadena($id);
         
         <!-- Este campo es necesario para enviar el ID de la categoria junto con otros datos del formulario al procesar el envío del formulario en el lado del servidor. -->
 
-        <input type="hidden" name="categoria_id" value="<?php print $datos['categoria_id']?>" id="categoria_id" required>
+        <input type="hidden" name="categoria_id" value="<?php echo $datos['categoria_id']?>" id="categoria_id" required>
         <div class="columns">
             <div class="column">
                 <label>Nombre de la categoría</label>
                 
                 <!-- Esta variable asegura que el campo se rellene automáticamente con el nombre de la categoría existente cuando se carga el formulario para actualizar la información del usuario. -->
 
-                <input type="text" class="input" name="categoria_nombre" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="50" required value="<?php print $datos['categoria_nombre']?>">
+                <input type="text" class="input" name="categoria_nombre" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="50" required value="<?php echo $datos['categoria_nombre']?>">
             </div>
 
             <div class="column">
                 <label>Ubicación</label>
-                <input type="text" class="input" name="categoria_ubicacion" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,150}" maxlength="150" value="<?php print $datos['categoria_ubicacion']?>">
+                <input type="text" class="input" name="categoria_ubicacion" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,150}" maxlength="150" value="<?php echo $datos['categoria_ubicacion']?>">
             </div>
         </div>
        
@@ -92,6 +92,6 @@ $id=limpiar_cadena($id);
         } else {
             include_once "./inc/error_alert.php";
         }
-        $check_usuario=null;
+        $check_categoria=null;
     ?>
 </div>

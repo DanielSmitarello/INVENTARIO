@@ -5,7 +5,7 @@ if (headers_sent()) {
 
     // Si las cabeceras ya se han enviado, se utiliza JavaScript para redirigir
     
-    print "<script>window.location.href='index.php?vista=home';</script>";
+    echo "<script>window.location.href='index.php?vista=home';</script>";
 
 } else {
     
